@@ -16,6 +16,8 @@ ITEMS PONDERACIÓN
 - Documento – sustentación por video 0.95
 - Conclusiones – sustentación por video
 '''
+import random
+
 print("Prueba")
 personaje1 = {
 
@@ -88,11 +90,36 @@ personaje9 = {
 "arma": ["latigo", "brazaletes", "espada"],
 "poder": ["super fuerza"]
 }
-personaje1 = {
 
-"name": " ",
-"genero": " ",
-"color": " ",
-"arma": " ",
-"poder": ""
-}
+listaPersonajes = [personaje1,personaje2,personaje3,personaje4,personaje5,personaje7,personaje6,personaje8,personaje9]
+personajeSeleccionado = listaPersonajes[random.randint(0,8)]
+print(personajeSeleccionado)
+
+def PersonajerCaracteristica(listaCaracteristicas):
+
+     for personaje in  listaCaracteristicas:
+         personajeNombre=""
+         printList=[]
+
+         for item in personaje:
+             if item == "name":
+                 personajeNombre==personaje[item]
+             else:
+                 printList.append(personaje[item])
+                 print(personajeNombre)
+                 print(printList)
+
+PersonajerCaracteristica(listaPersonajes)
+print(("Bienvenido a adivina quien , tienes un nombre random de un personaje, y adivina quien es "))
+print(("Aceptble commands are: (list), (gender),(age),(height),(hair), or (adivina nombre)"))
+
+usuarioComando= ""
+gameStatus=""
+userQuestionCout=0
+
+while usuarioComando !='quit' and gameStatus !='over':
+
+usuarioComando= input("Que le gustaria hacer?")
+
+pass
+
