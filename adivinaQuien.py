@@ -111,15 +111,52 @@ def PersonajerCaracteristica(listaCaracteristicas):
 
 PersonajerCaracteristica(listaPersonajes)
 print(("Bienvenido a adivina quien , tienes un nombre random de un personaje, y adivina quien es "))
-print(("Aceptble commands are: (list), (gender),(age),(height),(hair), or (adivina nombre)"))
+print(("Respuestas Aceptadas:(list),(genero),(color),(armna),(poder), or (adivina nombre)"))
 
 usuarioComando= ""
 gameStatus=""
-userQuestionCout=0
+userQuestionCout = 0
 
 while usuarioComando !='quit' and gameStatus !='over':
 
-usuarioComando= input("Que le gustaria hacer?")
+    usuarioComando= input("Cual caracteristica te gusta? (list/genero/color/arma/poder)")
 
-pass
+    if userQuestionCout < 2:
+        if usuarioComando == "genero":
+            print(personajeSeleccionado["genero"])
+            userQuestionCout +=1
+
+        elif usuarioComando == "color":
+            print(personajeSeleccionado["color"])
+            userQuestionCout += 1
+
+        elif usuarioComando == "arma":
+            print(personajeSeleccionado["arma"])
+            userQuestionCout += 1
+
+        elif usuarioComando == "arma":
+            print(personajeSeleccionado["arma"])
+            userQuestionCout += 1
+
+        elif usuarioComando == "list":
+            PersonajerCaracteristica(listaPersonajes)
+
+        elif usuarioComando == "respuesta" :
+            respuestaUsuario = input("te has quedado sin conjeturas,cual personaje te gustaria adivinar?")
+
+            if respuestaUsuario == personajeSeleccionado["name"]:
+                gameStatus = "over"
+                print("tu respuesta es correcta" )
+            else:
+                gameStatus = "over"
+                print("tu respuesta no es correcta")
+        else:
+            respuestaUsuario = input("te has quedado sin conjeturas,cual personaje te gustaria adivinar?")
+
+            if respuestaUsuario == personajeSeleccionado["name"]:
+                gameStatus = "over"
+                print("tu respuesta  es correcta! ")
+            else:
+                gameStatus = "over"
+                print("tu respuesta no es correcta. ")
 
