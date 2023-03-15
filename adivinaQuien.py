@@ -18,7 +18,6 @@ ITEMS PONDERACIÓN
 '''
 import random
 
-print("Prueba")
 personaje1 = {
 
     "name": "spiderman",
@@ -91,72 +90,85 @@ personaje9 = {
 "poder": ["super fuerza"]
 }
 
-listaPersonajes = [personaje1,personaje2,personaje3,personaje4,personaje5,personaje7,personaje6,personaje8,personaje9]
-personajeSeleccionado = listaPersonajes[random.randint(0,8)]
-print(personajeSeleccionado)
+listaPersonajes= [personaje1,personaje2,personaje3,personaje4,personaje5,personaje7,personaje6,personaje8,personaje9]
+gameChosenCharacter= listaPersonajes[random.randint(0,8)]
+#print(gameChosenCharacter)
 
-def PersonajerCaracteristica(listaCaracteristicas):
+def print_all_chars(list_of_chars):
 
-     for personaje in  listaCaracteristicas:
-         personajeNombre=""
-         printList=[]
+    for personaje in  list_of_chars:
+        charName=''
+        printList = []
 
-         for item in personaje:
-             if item == "name":
-                 personajeNombre==personaje[item]
-             else:
-                 printList.append(personaje[item])
-                 print(personajeNombre)
-                 print(printList)
+        for item in personaje:
+            if item == "name":
+                charName=personaje[item]
+            else:
+                printList.append(personaje[item])
 
-PersonajerCaracteristica(listaPersonajes)
+        print(charName)
+        print(printList)
+
+
 print(("Bienvenido a adivina quien , tienes un nombre random de un personaje, y adivina quien es "))
 print(("Respuestas Aceptadas:(list),(genero),(color),(armna),(poder), or (adivina nombre)"))
 
-usuarioComando= ""
-gameStatus=""
+
+#print_all_chars(listaPersonajes)
+for personaje in listaPersonajes:
+    print(personaje["name"])
+userCommand= ''
+gameStatus= ''
 userQuestionCout = 0
 
-while usuarioComando !='quit' and gameStatus !='over':
+while userCommand !='quit' and gameStatus != 'over':
 
-    usuarioComando= input("Cual caracteristica te gusta? (list/genero/color/arma/poder)")
+    #userCommand=input("What would you like to do?  (genero/color/arma/poder)")
 
     if userQuestionCout < 2:
-        if usuarioComando == "genero":
-            print(personajeSeleccionado["genero"])
-            userQuestionCout +=1
-
-        elif usuarioComando == "color":
-            print(personajeSeleccionado["color"])
+        userCommand = input("What would you like to do?  (genero/color/arma/poder)")
+        if userCommand == "genero":
+            print(gameChosenCharacter["genero"])
+            userQuestionCout += 1
+        elif userCommand == "color":
+            print(gameChosenCharacter["color"])
             userQuestionCout += 1
 
-        elif usuarioComando == "arma":
-            print(personajeSeleccionado["arma"])
+        elif userCommand == "arma":
+            print(gameChosenCharacter["arma"])
             userQuestionCout += 1
 
-        elif usuarioComando == "arma":
-            print(personajeSeleccionado["arma"])
+        elif userCommand == "poder":
+            print(gameChosenCharacter["poder"])
             userQuestionCout += 1
 
-        elif usuarioComando == "list":
-            PersonajerCaracteristica(listaPersonajes)
+        elif userCommand == "list":
+            print_all_chars(listaPersonajes)
 
-        elif usuarioComando == "respuesta" :
-            respuestaUsuario = input("te has quedado sin conjeturas,cual personaje te gustaria adivinar?")
+        elif userCommand =='guess':
 
-            if respuestaUsuario == personajeSeleccionado["name"]:
+            userGuess = input("you ve run out of questions,with character would you like to guess? ")
+
+            if userGuess ==gameChosenCharacter['name']:
                 gameStatus = "over"
-                print("tu respuesta es correcta" )
+                print("you chose correctly!")
+
             else:
-                gameStatus = "over"
-                print("tu respuesta no es correcta")
+                gameStatus = 'over'
+                print("you did not choose correctly")
+
         else:
-            respuestaUsuario = input("te has quedado sin conjeturas,cual personaje te gustaria adivinar?")
+             print("youd did no enter a valid command, please tray again")
 
-            if respuestaUsuario == personajeSeleccionado["name"]:
-                gameStatus = "over"
-                print("tu respuesta  es correcta! ")
-            else:
-                gameStatus = "over"
-                print("tu respuesta no es correcta. ")
+    else:
+        userGuess = input("you ve run out of questions,with character would you like to guess? ")
 
+        if userGuess ==gameChosenCharacter['name']:
+
+            gameStatus = 'over'
+            print("you chose correctly")
+
+        else:
+
+            gameStatus = 'over'
+            print("you did not choose correctly")
